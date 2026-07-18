@@ -51,17 +51,20 @@
         updateBannerVisibility();
       }
 
+      // Assets grandes estão no Git LFS; o Vercel serve só o pointer (~134 B).
+      // Carregamos data/framework/wasm do CDN do GitHub (CORS liberado).
       var buildUrl = "Build";
+      var lfsBase = "https://media.githubusercontent.com/media/jpeixer/pmgplay/main/Build";
       var loaderUrl = buildUrl + "/WebGL.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/WebGL.data.unityweb",
-        frameworkUrl: buildUrl + "/WebGL.framework.js.unityweb",
-        codeUrl: buildUrl + "/WebGL.wasm.unityweb",
+        dataUrl: lfsBase + "/WebGL.data.unityweb",
+        frameworkUrl: lfsBase + "/WebGL.framework.js.unityweb",
+        codeUrl: lfsBase + "/WebGL.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "PMG",
         productName: "PMG Play - Digital Twin",
-        productVersion: "1.0.4",
+        productVersion: "1.0.5",
         showBanner: unityShowBanner,
         // errorHandler: function(err, url, line) {
         //    alert("error " + err + " occurred at line " + line);
